@@ -6,8 +6,6 @@ const mongodb = require('./configurations/mongodb-client');
 
 const app = express();
 
-console.log("Server Started");
-
 app.use(morgan('dev'));
 
 app.use(bodyParser.urlencoded({
@@ -24,3 +22,5 @@ mongodb.init((error, database) => {
         console.log("Connected to MongoDB");
     }
 });
+
+module.exports = app;

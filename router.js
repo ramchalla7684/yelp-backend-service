@@ -1,3 +1,4 @@
+const businessCategoriesRouter = require('./routes/business_categories');
 const reviewsRouter = require('./routes/reviews');
 
 function init(app) {
@@ -14,6 +15,7 @@ function init(app) {
         next();
     });
 
+    app.use('/api/v1/business_categories', businessCategoriesRouter);
     app.use('/api/v1/reviews', reviewsRouter);
 
     app.use((request, response, next) => {
@@ -44,7 +46,6 @@ function init(app) {
     });
 
     return app;
-
 }
 
 module.exports = {
