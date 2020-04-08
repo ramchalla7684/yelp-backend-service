@@ -1,4 +1,3 @@
-const mongodb = require('mongodb');
 const mongodbClient = require('../configurations/mongodb-client');
 
 module.exports.getTopBusinessCategories = (request, response, next) => {
@@ -11,7 +10,10 @@ module.exports.getTopBusinessCategories = (request, response, next) => {
         return;
     }
 
-    db.collection('business_categories').find({}).sort({
+    db.collection('business_categories').find({}).project({
+        category: 1,
+        count: 1
+    }).sort({
         count: -1
     }).limit(top).toArray((error, documents) => {
         if (error) {

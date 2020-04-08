@@ -1,4 +1,5 @@
 const businessCategoriesRouter = require('./routes/business_categories');
+const businessesRouter = require('./routes/businesses');
 const reviewsRouter = require('./routes/reviews');
 
 function init(app) {
@@ -16,6 +17,7 @@ function init(app) {
     });
 
     app.use('/api/v1/business_categories', businessCategoriesRouter);
+    app.use('/api/v1/businesses', businessesRouter);
     app.use('/api/v1/reviews', reviewsRouter);
 
     app.use((request, response, next) => {
