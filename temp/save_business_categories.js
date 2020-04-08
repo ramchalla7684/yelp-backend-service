@@ -1,6 +1,3 @@
-const {
-    ObjectId
-} = require('mongodb');
 const mongodbClient = require('../configurations/mongodb-client');
 
 mongodbClient.init((error, client) => {
