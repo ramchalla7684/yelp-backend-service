@@ -18,7 +18,9 @@ module.exports.getMostReviewedBusinesses = (request, response, next) => {
         latitude: 1,
         longitude: 1,
         categories: 1,
-        review_count: 1
+        review_count: 1,
+        reviews_start_date: 1,
+        reviews_end_date: 1
     }).sort({
         review_count: -1
     }).limit(top).toArray((error, documents) => {
@@ -29,14 +31,8 @@ module.exports.getMostReviewedBusinesses = (request, response, next) => {
         }
 
         documents = documents.map(document => {
-            return {
-                business_id: document.business_id,
-                name: document.name,
-                latitude: document.latitude,
-                longitude: document.longitude,
-                categories: document.categories,
-                review_count: document.review_count
-            };
+            delete document._id;
+            return document;
         });
         response.status(200).json(documents);
     })
