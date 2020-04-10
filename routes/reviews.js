@@ -1,4 +1,5 @@
 const express = require('express');
+const reviewsController = require('../controllers/reviews');
 
 const router = express.Router();
 
@@ -7,6 +8,5 @@ router.get('/', (request, response, next) => {
         connected: true
     });
 });
-
 
 module.exports = router;

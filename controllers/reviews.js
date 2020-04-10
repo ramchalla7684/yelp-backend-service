@@ -1,0 +1,1 @@
+const mongodbClient = require('../configurations/mongodb-client');
