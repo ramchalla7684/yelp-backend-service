@@ -1,7 +1,8 @@
 const mongodbClient = require('../configurations/mongodb-client');
 module.exports.getMostReviewedBusinesses = (request, response, next) => {
     let category = request.query.category;
-    let top = 20;
+    let top = Number(request.query.top) || 15;
+    top = Math.max(Math.min(top, 15), 1);
 
     const db = mongodbClient.getDB();
     if (!db) {

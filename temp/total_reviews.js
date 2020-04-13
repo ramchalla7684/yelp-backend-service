@@ -2,7 +2,7 @@ const mongodbClient = require('../configurations/mongodb-client');
 
 async function start() {
 
-    let top = 30;
+    let top = 15;
     const db = mongodbClient.getDB();
     if (!db) {
         console.error("Not connected to mongodb");
@@ -31,7 +31,7 @@ async function start() {
 
 function saveReviews(document, db) {
 
-    let top = 50;
+    let top = 15;
     return new Promise(async (resolve, reject) => {
         let cursor = db.collection('businesses').find({
             categories: document.category
@@ -68,10 +68,10 @@ function insertReviews(document, db) {
             for (let document of documents) {
                 delete document._id;
 
-                if (await db.collection('reviews_sub').find({
+                if (await db.collection('reviews_sub_2').find({
                         review_id: document.review_id
                     }).limit(1).hasNext()) {
-                    console.log("Exists");
+                    // console.log("Exists");
                     continue;
                 }
                 await insertOne(document, db);
@@ -84,7 +84,7 @@ function insertReviews(document, db) {
 
 function insertOne(document, db) {
     return new Promise((resolve, reject) => {
-        db.collection('reviews_sub').insertOne(document, (error, result) => {
+        db.collection('reviews_sub_2').insertOne(document, (error, result) => {
             if (error) {
                 console.error(error);
                 reject(-1);

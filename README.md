@@ -25,7 +25,7 @@
 ]
 ```
 ---
-#### GET /api/v1/businesses?category=Restaurants
+#### GET /api/v1/businesses?category=Restaurants&top=10
 #### Response
 ``` json
 [
