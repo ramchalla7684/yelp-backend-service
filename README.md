@@ -93,3 +93,6 @@
 ]
 ```
 ---
+#### GET /api/v1/businesses/4JNXUYY8wbaaDmk3BPzlWw
+#### Response
+*Sample response in samples/business.json*

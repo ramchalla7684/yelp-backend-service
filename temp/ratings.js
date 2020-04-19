@@ -44,21 +44,24 @@ function groupRatings(reviews, docID, db) {
     let group = {};
 
     for (let review of reviews) {
-        let m = moment(review.date);
+        let year = moment(review.date).year();
+        let month = moment(review.date).month();
+        let week = moment(review.date).day('Monday').week();
+        let day = moment(review.date).dayOfYear();
 
-        let year = m.year();
-        let month = m.month();
-        let week = m.day('Monday').week();
+        let weekStartDate = moment(review.date).year(year).day('Monday').week(week).utc().format('ll');
+        let weekEndDate = moment(review.date).year(year).day('Monday').week(week).add(6, 'day').utc().format('ll');
 
-        let weekStartDate = moment(review.date).year(year).day('Monday').week(week).utc().format('LL');
-        let weekEndDate = moment(review.date).year(year).day('Monday').week(week).add(6, 'day').utc().format('LL');
-
-        if (moment(weekEndDate, 'LL').year() != year) {
-            weekEndDate = `December 31, ${year}`;
+        if (moment(weekStartDate, 'll').year() != year) {
+            weekStartDate = `Jan 01, ${year}`;
+        }
+        if (moment(weekEndDate, 'll').year() != year) {
+            weekEndDate = `Dec 31, ${year}`;
         }
         let quarter = Math.floor(month / 3);
 
-        addToGroup(group, moment(review.date).utc().format('LL'), year, quarter, week, weekStartDate, weekEndDate, review.stars);
+        let date = moment(review.date).utc().format('ll');
+        addToGroup(group, date, year, quarter, month, week, day, weekStartDate, weekEndDate, review.stars);
     }
 
     aggregate(group);
@@ -83,15 +86,23 @@ function groupRatings(reviews, docID, db) {
     });
 }
 
-function addToGroup(group, date, year, quarter, week, weekStartDate, weekEndDate, stars) {
+function addToGroup(group, date, year, quarter, month, week, day, weekStartDate, weekEndDate, stars) {
     if (!group[year]) {
         group[year] = {};
     }
 
     if (!group[year][quarter]) {
         group[year][quarter] = {
+            'monthly': {},
             'weekly': {},
             'daily': {}
+        };
+    }
+
+    if (!group[year][quarter]['monthly'][month]) {
+        group[year][quarter]['monthly'][month] = {
+            'month': moment.monthsShort(month),
+            'stars': []
         };
     }
 
@@ -103,26 +114,34 @@ function addToGroup(group, date, year, quarter, week, weekStartDate, weekEndDate
         };
     }
 
-    if (!group[year][quarter]['daily'][date]) {
-        group[year][quarter]['daily'][date] = {
-            stars: []
+    if (!group[year][quarter]['daily'][day]) {
+        group[year][quarter]['daily'][day] = {
+            'date': date,
+            'stars': []
         };
     }
 
+    group[year][quarter]['monthly'][month].stars.push(stars);
     group[year][quarter]['weekly'][week].stars.push(stars);
-    group[year][quarter]['daily'][date].stars.push(stars);
+    group[year][quarter]['daily'][day].stars.push(stars);
 }
 
 function aggregate(group) {
     for (let year in group) {
         for (let quarter in group[year]) {
+            for (let month in group[year][quarter]['monthly']) {
+                let len = Math.max(group[year][quarter]['monthly'][month].stars.length, 1);
+                group[year][quarter]['monthly'][month].stars = (group[year][quarter]['monthly'][month].stars.reduce((a, b) => a + b, 0) / len).toFixed(4);
+            }
+
             for (let week in group[year][quarter]['weekly']) {
                 let len = Math.max(group[year][quarter]['weekly'][week].stars.length, 1);
                 group[year][quarter]['weekly'][week].stars = (group[year][quarter]['weekly'][week].stars.reduce((a, b) => a + b, 0) / len).toFixed(4);
             }
-            for (let date in group[year][quarter]['daily']) {
-                let len = Math.max(group[year][quarter]['daily'][date].stars.length, 1);
-                group[year][quarter]['daily'][date].stars = (group[year][quarter]['daily'][date].stars.reduce((a, b) => a + b, 0) / len).toFixed(4);
+
+            for (let day in group[year][quarter]['daily']) {
+                let len = Math.max(group[year][quarter]['daily'][day].stars.length, 1);
+                group[year][quarter]['daily'][day].stars = (group[year][quarter]['daily'][day].stars.reduce((a, b) => a + b, 0) / len).toFixed(4);
             }
         }
     }
