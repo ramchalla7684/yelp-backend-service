@@ -27,6 +27,7 @@
 ---
 #### GET /api/v1/businesses?category=Restaurants&top=10
 #### Response
+*Sample response in samples/businesses.json*
 ``` json
 [
     {

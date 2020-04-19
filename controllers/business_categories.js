@@ -23,12 +23,15 @@ module.exports.getTopBusinessCategories = (request, response, next) => {
             return;
         }
 
-        documents = documents.map(document => {
-            return {
-                category: document.category,
-                count: document.count
-            };
-        });
+        documents = documents
+            .map(document => {
+                return {
+                    category: document.category,
+                    count: document.count
+                };
+            })
+            .sort((a, b) => a.category.toLowerCase().localeCompare(b.category.toLowerCase()));
+
         response.status(200).json(documents);
     });
 }

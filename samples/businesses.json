@@ -1,0 +1,259 @@
+[{
+        "business_id": "4JNXUYY8wbaaDmk3BPzlWw",
+        "name": "Mon Ami Gabi",
+        "latitude": 36.112859,
+        "longitude": -115.172434,
+        "review_count": 8570,
+        "categories": [
+            "Food",
+            "French",
+            "Breakfast & Brunch",
+            "Restaurants",
+            "Steakhouses"
+        ],
+        "reviews_end_date": "2018-11-14T00:50:10.000Z",
+        "reviews_start_date": "2005-10-10T20:01:53.000Z"
+    },
+    {
+        "business_id": "RESDUcs7fIiihp38-d6_6g",
+        "name": "Bacchanal Buffet",
+        "latitude": 36.116113,
+        "longitude": -115.176222,
+        "review_count": 8568,
+        "categories": [
+            "Restaurants",
+            "Buffets",
+            "Sandwiches",
+            "Food",
+            "Breakfast & Brunch"
+        ],
+        "reviews_end_date": "2018-11-14T17:58:20.000Z",
+        "reviews_start_date": "2012-09-10T20:03:19.000Z"
+    },
+    {
+        "business_id": "K7lWdNUhCbcnEvI0NhGewg",
+        "name": "Wicked Spoon",
+        "latitude": 36.10955,
+        "longitude": -115.176155,
+        "review_count": 6887,
+        "categories": [
+            "Buffets",
+            "Breakfast & Brunch",
+            "Restaurants"
+        ],
+        "reviews_end_date": "2018-11-14T17:49:33.000Z",
+        "reviews_start_date": "2010-12-18T03:07:06.000Z"
+    },
+    {
+        "business_id": "f4x1YBxkLrZg652xt2KR5g",
+        "name": "Hash House A Go Go",
+        "latitude": 36.1181806906,
+        "longitude": -115.1715797813,
+        "review_count": 5847,
+        "categories": [
+            "Breakfast & Brunch",
+            "Food",
+            "Restaurants",
+            "American (New)"
+        ],
+        "reviews_end_date": "2018-11-14T15:12:37.000Z",
+        "reviews_start_date": "2010-01-29T19:51:52.000Z"
+    },
+    {
+        "business_id": "cYwJA2A6I12KNkm2rtXd5g",
+        "name": "Gordon Ramsay BurGR",
+        "latitude": 36.110724,
+        "longitude": -115.172169,
+        "review_count": 5575,
+        "categories": [
+            "Restaurants",
+            "Burgers",
+            "American (Traditional)"
+        ],
+        "reviews_end_date": "2018-09-28T06:24:56.000Z",
+        "reviews_start_date": "2012-12-23T17:51:12.000Z"
+    },
+    {
+        "business_id": "DkYS3arLOhA8si5uUEmHOw",
+        "name": "Earl of Sandwich",
+        "latitude": 36.109418,
+        "longitude": -115.1718738,
+        "review_count": 5206,
+        "categories": [
+            "Food Delivery Services",
+            "Salad",
+            "Sandwiches",
+            "Soup",
+            "Food",
+            "Event Planning & Services",
+            "American (New)",
+            "Restaurants",
+            "Caterers",
+            "Wraps"
+        ],
+        "reviews_end_date": "2018-11-14T03:34:28.000Z",
+        "reviews_start_date": "2007-10-08T17:10:31.000Z"
+    },
+    {
+        "business_id": "2weQS-RnoOBhb1KsHKyoSQ",
+        "name": "The Buffet",
+        "latitude": 36.1268872232,
+        "longitude": -115.1655900478,
+        "review_count": 4534,
+        "categories": [
+            "Beauty & Spas",
+            "Food",
+            "Event Planning & Services",
+            "Hotels",
+            "Buffets",
+            "Casinos",
+            "Day Spas",
+            "Restaurants",
+            "Arts & Entertainment",
+            "Hotels & Travel"
+        ],
+        "reviews_end_date": "2018-11-13T18:57:26.000Z",
+        "reviews_start_date": "2006-04-11T07:58:43.000Z"
+    },
+    {
+        "business_id": "5LNZ67Yw9RD6nf4_UhXOjw",
+        "name": "The Cosmopolitan of Las Vegas",
+        "latitude": 36.1097553,
+        "longitude": -115.1738769,
+        "review_count": 4522,
+        "categories": [
+            "Casinos",
+            "Hotels",
+            "Event Planning & Services",
+            "Restaurants",
+            "Arts & Entertainment",
+            "Hotels & Travel"
+        ],
+        "reviews_end_date": "2018-11-14T11:41:29.000Z",
+        "reviews_start_date": "2010-11-21T23:05:30.000Z"
+    },
+    {
+        "business_id": "iCQpiavjjPzJ5_3gPD5Ebg",
+        "name": "Secret Pizza",
+        "latitude": 36.109837,
+        "longitude": -115.174212,
+        "review_count": 4351,
+        "categories": [
+            "Pizza",
+            "Restaurants"
+        ],
+        "reviews_end_date": "2018-11-14T08:09:49.000Z",
+        "reviews_start_date": "2010-12-20T08:31:37.000Z"
+    },
+    {
+        "business_id": "ujHiaprwCQ5ewziu0Vi9rw",
+        "name": "The Buffet at Bellagio",
+        "latitude": 36.11322,
+        "longitude": -115.17689,
+        "review_count": 4318,
+        "categories": [
+            "American (New)",
+            "Buffets",
+            "Restaurants"
+        ],
+        "reviews_end_date": "2018-11-14T05:55:18.000Z",
+        "reviews_start_date": "2005-11-26T06:52:29.000Z"
+    },
+    {
+        "business_id": "AV6weBrZFFBfRGCbcRGO4g",
+        "name": "Luxor Hotel and Casino Las Vegas",
+        "latitude": 36.097340676,
+        "longitude": -115.1763394271,
+        "review_count": 4240,
+        "categories": [
+            "Nightlife",
+            "Casinos",
+            "Restaurants",
+            "Resorts",
+            "Arts & Entertainment",
+            "Hotels & Travel",
+            "Hotels",
+            "Event Planning & Services"
+        ],
+        "reviews_end_date": "2018-11-14T08:45:19.000Z",
+        "reviews_start_date": "2005-04-28T00:06:15.000Z"
+    },
+    {
+        "business_id": "KskYqH1Bi7Z_61pH6Om8pg",
+        "name": "Lotus of Siam",
+        "latitude": 36.1436636,
+        "longitude": -115.1418906,
+        "review_count": 4131,
+        "categories": [
+            "Car Dealers",
+            "Nightlife",
+            "Automotive",
+            "Buffets",
+            "Wine Bars",
+            "Bars",
+            "Thai",
+            "Restaurants",
+            "Seafood"
+        ],
+        "reviews_end_date": "2018-09-02T20:54:03.000Z",
+        "reviews_start_date": "2005-07-13T05:31:50.000Z"
+    },
+    {
+        "business_id": "El4FC8jcawUVgw_0EIcbaQ",
+        "name": "MGM Grand Hotel",
+        "latitude": 36.1022507,
+        "longitude": -115.1699679,
+        "review_count": 4093,
+        "categories": [
+            "Casinos",
+            "Event Planning & Services",
+            "Restaurants",
+            "Arts & Entertainment",
+            "Hotels",
+            "Hotels & Travel",
+            "Resorts"
+        ],
+        "reviews_end_date": "2018-11-13T23:19:50.000Z",
+        "reviews_start_date": "2005-11-11T00:29:45.000Z"
+    },
+    {
+        "business_id": "rcaPajgKOJC2vo_l3xa42A",
+        "name": "Bouchon",
+        "latitude": 36.1209554593,
+        "longitude": -115.1698532494,
+        "review_count": 4014,
+        "categories": [
+            "French",
+            "Bars",
+            "Cocktail Bars",
+            "Nightlife",
+            "Breakfast & Brunch",
+            "Cafes",
+            "Venues & Event Spaces",
+            "Restaurants",
+            "Event Planning & Services"
+        ],
+        "reviews_end_date": "2018-11-13T22:20:51.000Z",
+        "reviews_start_date": "2005-08-27T16:26:56.000Z"
+    },
+    {
+        "business_id": "eoHdUeQDNgQ6WYEnP2aiRw",
+        "name": "Serendipity 3",
+        "latitude": 36.1156697204,
+        "longitude": -115.1733165796,
+        "review_count": 4006,
+        "categories": [
+            "Juice Bars & Smoothies",
+            "Social Clubs",
+            "Arts & Entertainment",
+            "American (Traditional)",
+            "Local Flavor",
+            "Restaurants",
+            "Desserts",
+            "American (New)",
+            "Food"
+        ],
+        "reviews_end_date": "2018-03-03T17:23:07.000Z",
+        "reviews_start_date": "2009-04-08T06:02:51.000Z"
+    }
+]
