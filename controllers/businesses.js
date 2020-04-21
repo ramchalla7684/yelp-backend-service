@@ -116,16 +116,36 @@ module.exports.getBusinessDetails = (request, response, next) => {
             }
         }
 
-        response.status(200).json({
-            business_id: document.business_id,
-            name: document.name,
-            latitude: document.latitude,
-            longitude: document.longitude,
-            categories: document.categories,
-            review_count: document.review_count,
-            available_dates: availableDates,
-            ratings: ratings
-        });
+        let keywords = document.keywords;
+        delete keywords[startYear];
 
+        db.collection('checkins').findOne({
+            business_id: business_id
+        }, (error, document) => {
+            if (error) {
+                console.error(error);
+                response.status(500).json({});
+                return;
+            }
+
+            let checkins = {};
+            if (document) {
+                checkins = document.dates_group;
+            }
+
+            response.status(200).json({
+                business_id: document.business_id,
+                name: document.name,
+                latitude: document.latitude,
+                longitude: document.longitude,
+                categories: document.categories,
+                review_count: document.review_count,
+                available_dates: availableDates,
+                ratings: ratings,
+                keywords: keywords,
+                checkins: checkins
+            });
+
+        });
     });
 }
