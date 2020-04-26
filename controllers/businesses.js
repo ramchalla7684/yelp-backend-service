@@ -18,6 +18,7 @@ module.exports.getMostReviewedBusinesses = (request, response, next) => {
         name: 1,
         latitude: 1,
         longitude: 1,
+        address: 1,
         categories: 1,
         review_count: 1,
         reviews_start_date: 1,
@@ -76,7 +77,7 @@ module.exports.getBusinessDetails = (request, response, next) => {
         let ratings = {};
         for (let year in availableDates) {
             ratings[year] = {};
-            for (let quarter in availableDates[year]) {
+            for (let quarter of availableDates[year]) {
                 ratings[year][quarter] = [];
 
                 let monthly = [];
