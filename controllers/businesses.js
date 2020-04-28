@@ -74,55 +74,56 @@ module.exports.getBusinessDetails = (request, response, next) => {
         let startYear = Math.min(...Object.keys(availableDates));
         delete availableDates[startYear];
 
-        let ratings = {};
-        for (let year in availableDates) {
-            ratings[year] = {};
-            for (let quarter of availableDates[year]) {
-                ratings[year][quarter] = [];
+        let ratings = document.ratings;
+        delete ratings[startYear];
+        // for (let year in availableDates) {
+        //     ratings[year] = {};
+        //     for (let quarter of availableDates[year]) {
+        //         ratings[year][quarter] = [];
 
-                let monthly = [];
-                for (let month in document.ratings[year][quarter].monthly) {
-                    monthly.push({
-                        date: `${document.ratings[year][quarter].monthly[month].month} 01, ${year}`,
-                        stars: document.ratings[year][quarter].monthly[month].stars,
-                    });
-                }
+        //         let monthly = [];
+        //         for (let month in document.ratings[year][quarter].monthly) {
+        //             monthly.push({
+        //                 date: `${document.ratings[year][quarter].monthly[month].month} 01, ${year}`,
+        //                 stars: document.ratings[year][quarter].monthly[month].stars,
+        //             });
+        //         }
 
-                let weekly = [];
-                for (let week in document.ratings[year][quarter].weekly) {
-                    weekly.push({
-                        date: document.ratings[year][quarter].weekly[week].start,
-                        stars: document.ratings[year][quarter].weekly[week].stars
-                    });
-                }
+        //         let weekly = [];
+        //         for (let week in document.ratings[year][quarter].weekly) {
+        //             weekly.push({
+        //                 date: document.ratings[year][quarter].weekly[week].start,
+        //                 stars: document.ratings[year][quarter].weekly[week].stars
+        //             });
+        //         }
 
-                let daily = [];
-                for (let day in document.ratings[year][quarter].daily) {
-                    daily.push({
-                        date: document.ratings[year][quarter].daily[day].date,
-                        stars: document.ratings[year][quarter].daily[day].stars
-                    });
-                }
+        //         let daily = [];
+        //         for (let day in document.ratings[year][quarter].daily) {
+        //             daily.push({
+        //                 date: document.ratings[year][quarter].daily[day].date,
+        //                 stars: document.ratings[year][quarter].daily[day].stars
+        //             });
+        //         }
 
-                ratings[year][quarter] = [{
-                    name: 'monthly',
-                    data: monthly
-                }, {
-                    name: 'weekly',
-                    data: weekly
-                }, {
-                    name: 'daily',
-                    data: daily
-                }, ];
-            }
-        }
+        //         ratings[year][quarter] = [{
+        //             name: 'monthly',
+        //             data: monthly
+        //         }, {
+        //             name: 'weekly',
+        //             data: weekly
+        //         }, {
+        //             name: 'daily',
+        //             data: daily
+        //         }, ];
+        //     }
+        // }
 
         let keywords = document.keywords;
         delete keywords[startYear];
 
         db.collection('checkins').findOne({
             business_id: business_id
-        }, (error, document) => {
+        }, (error, _document) => {
             if (error) {
                 console.error(error);
                 response.status(500).json({});
@@ -130,8 +131,8 @@ module.exports.getBusinessDetails = (request, response, next) => {
             }
 
             let checkins = {};
-            if (document) {
-                checkins = document.dates_group;
+            if (_document) {
+                checkins = _document.dates_group;
             }
 
             response.status(200).json({
@@ -139,6 +140,7 @@ module.exports.getBusinessDetails = (request, response, next) => {
                 name: document.name,
                 latitude: document.latitude,
                 longitude: document.longitude,
+                address: document.address,
                 categories: document.categories,
                 review_count: document.review_count,
                 available_dates: availableDates,

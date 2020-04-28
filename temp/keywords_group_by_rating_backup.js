@@ -53,8 +53,9 @@ function groupKeywordsByStars(reviews, docID, db) {
 
         let year = m.year();
         let month = m.month();
+        let quarter = Math.floor(month / 3);
 
-        addToGroup(group, year, month, review.stars, review.keywords);
+        addToGroup(group, year, quarter, review.stars, review.keywords);
     }
 
     // aggregate(group);
@@ -79,35 +80,35 @@ function groupKeywordsByStars(reviews, docID, db) {
     });
 }
 
-function addToGroup(group, year, month, stars, keywords) {
+function addToGroup(group, year, quarter, stars, keywords) {
     if (!group[year]) {
         group[year] = {};
     }
 
-    if (!group[year][month]) {
-        group[year][month] = {
+    if (!group[year][quarter]) {
+        group[year][quarter] = {
             'stars': {},
             'keywords': {}
         };
     }
 
-    if (!group[year][month]['stars'][stars]) {
-        group[year][month]['stars'][stars] = {};
+    if (!group[year][quarter]['stars'][stars]) {
+        group[year][quarter]['stars'][stars] = {};
     }
 
     for (let keyword in keywords) {
         let sentimentScores = keywords[keyword];
 
-        if (!group[year][month]['stars'][stars][keyword]) {
-            group[year][month]['stars'][stars][keyword] = [];
+        if (!group[year][quarter]['stars'][stars][keyword]) {
+            group[year][quarter]['stars'][stars][keyword] = [];
         }
 
-        if (!group[year][month]['keywords'][keyword]) {
-            group[year][month]['keywords'][keyword] = [];
+        if (!group[year][quarter]['keywords'][keyword]) {
+            group[year][quarter]['keywords'][keyword] = [];
         }
 
-        group[year][month]['stars'][stars][keyword] = group[year][month]['stars'][stars][keyword].concat(sentimentScores);
-        group[year][month]['keywords'][keyword] = group[year][month]['keywords'][keyword].concat(sentimentScores);
+        group[year][quarter]['stars'][stars][keyword] = group[year][quarter]['stars'][stars][keyword].concat(sentimentScores);
+        group[year][quarter]['keywords'][keyword] = group[year][quarter]['keywords'][keyword].concat(sentimentScores);
     }
 }
 
