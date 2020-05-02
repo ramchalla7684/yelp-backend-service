@@ -1,99 +1,56 @@
-## Endpoints
----
-#### GET /api/v1/business_categories?top=10
-#### Response
-``` json
-[
-    {
-        "category": "Restaurants",
-        "count": 59371
-    },
-    {
-        "category": "Shopping",
-        "count": 31878
-    },
-    ...
-    ...
-    {
-        "category": "Nightlife",
-        "count": 13095
-    },
-    {
-        "category": "Bars",
-        "count": 11341
-    }
-]
+## Yelp Business Insights
+
+> Public dataset: [https://www.yelp.com/dataset](http://yelpdashboard.s3.amazonaws.com/index.html)
+
+
+#### prerequisities:
+* NodeJS
+* MongoDB
+
+<br>
+
+If you want to setup it up locally, download the project and run
 ```
----
-#### GET /api/v1/businesses?category=Restaurants&top=10
-#### Response
-*Sample response in samples/businesses.json*
-``` json
-[
-    {
-        "business_id": "4JNXUYY8wbaaDmk3BPzlWw",
-        "name": "Mon Ami Gabi",
-        "latitude": 36.112859,
-        "longitude": -115.172434,
-        "review_count": 8570,
-        "categories": [
-            "Food",
-            "French",
-            "Breakfast & Brunch",
-            "Restaurants",
-            "Steakhouses"
-        ],
-        "reviews_end_date": "2018-11-14T00:50:10.000Z",
-        "reviews_start_date": "2005-10-10T20:01:53.000Z"
-    },
-    {
-        "business_id": "RESDUcs7fIiihp38-d6_6g",
-        "name": "Bacchanal Buffet",
-        "latitude": 36.116113,
-        "longitude": -115.176222,
-        "review_count": 8568,
-        "categories": [
-            "Restaurants",
-            "Buffets",
-            "Sandwiches",
-            "Food",
-            "Breakfast & Brunch"
-        ],
-        "reviews_end_date": "2018-11-14T17:58:20.000Z",
-        "reviews_start_date": "2012-09-10T20:03:19.000Z"
-    },
-    ...
-    ...
-    {
-        "business_id": "iCQpiavjjPzJ5_3gPD5Ebg",
-        "name": "Secret Pizza",
-        "latitude": 36.109837,
-        "longitude": -115.174212,
-        "review_count": 4351,
-        "categories": [
-            "Pizza",
-            "Restaurants"
-        ],
-        "reviews_end_date": "2018-11-14T08:09:49.000Z",
-        "reviews_start_date": "2010-12-20T08:31:37.000Z"
-    },
-    {
-        "business_id": "ujHiaprwCQ5ewziu0Vi9rw",
-        "name": "The Buffet at Bellagio",
-        "latitude": 36.11322,
-        "longitude": -115.17689,
-        "review_count": 4318,
-        "categories": [
-            "American (New)",
-            "Buffets",
-            "Restaurants"
-        ],
-        "reviews_end_date": "2018-11-14T05:55:18.000Z",
-        "reviews_start_date": "2005-11-26T06:52:29.000Z"
-    }
-]
+npm install
 ```
----
-#### GET /api/v1/businesses/4JNXUYY8wbaaDmk3BPzlWw
-#### Response
-*Sample response in samples/business.json*
+
+<br>
+
+Download the yelp dataset.
+
+Install MongoDB and import the yelp dataset into it with the collection names same as the .json file names.
+
+<br>
+Then run the scripts in the `meta_scripts` folder in the same order, to extract some meta information and change the data model suited for this project.
+
+```
+node meta_scripts/1_save_business_categories.js
+```
+
+You can skip the above step and download the .json files [business_categories.json](https://yelpasucse578data.s3.amazonaws.com/business_categories.json), [businesses.json](https://yelpasucse578data.s3.amazonaws.com/businesses.json), [checkins.json](https://yelpasucse578data.s3.amazonaws.com/checkins.json), [reviews_sub.json](https://yelpasucse578data.s3.amazonaws.com/reviews_sub.json)
+
+_These files will be hosted with public access until May 21 2020 for the purpose of an academic project under the course CSE578 at Arizona State University_
+
+[Original dataset: [https://www.yelp.com/dataset](https://www.yelp.com/dataset)]
+
+
+<br>
+
+Create a `.env` file the project folder and write
+```
+APP_NAME = yelp_backend_service
+
+MONGODB_DATABASE_NAME = <mongodb_databse_name>
+MONGODB_CONNECTION_URI = <your_mongodb_connection_url>
+
+SERVER_PORT = 3100
+```
+
+<br>
+
+Start the server with 
+```
+npm start
+```
+
+*Server will be running at port 3100*
