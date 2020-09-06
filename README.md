@@ -56,4 +56,4 @@ npm start
 *Server will be running at port 3100*
 
 
-*Source code for Topic Modeling and sentiment analysis: [yelp-topic-modeling](https://github.com/ramchalla7684/yelp-topic-modeling)*
+Source code for Topic Modeling and Sentiment Analysis: [yelp-topic-modeling](https://github.com/ramchalla7684/yelp-topic-modeling)
